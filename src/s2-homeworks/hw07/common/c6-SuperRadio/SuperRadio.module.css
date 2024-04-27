@@ -1,0 +1,21 @@
+.radio {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+}
+
+.radio::before {
+}
+
+.radio:checked::before {
+}
+
+.label {
+    display: flex;
+    gap: 14px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

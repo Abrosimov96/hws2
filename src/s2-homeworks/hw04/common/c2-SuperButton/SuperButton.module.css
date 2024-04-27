@@ -1,0 +1,61 @@
+.button {
+    padding: 4px 24px;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    background-color: unset;
+    border-radius: 3px;
+}
+
+.disabled {
+    color: rgba(0, 46, 92, 1);
+    background: rgba(0, 77, 153, 1);
+}
+
+.secondary {
+    background: #fff;
+    color: rgba(0, 102, 204, 1);
+    border: 1px solid rgba(0, 102, 204, 1)
+}
+
+.default {
+    background: rgba(0, 102, 204, 1);
+}
+
+.red {
+    background: rgba(204, 20, 57, 1);
+}
+
+.default:hover {
+    background: rgba(0, 128, 255, 1);
+    cursor: pointer;
+}
+
+.red:hover {
+    background: rgba(255, 26, 71, 1);
+    cursor: pointer;
+}
+
+.secondary:hover {
+    background: rgba(229, 240, 250, 1);
+    cursor: pointer;
+}
+
+.default:active {
+    background: rgba(0, 89, 178, 1);
+}
+
+.secondary:active {
+    background: rgba(201, 229, 255, 1);
+}
+
+.red:active {
+    background: rgba(178, 18, 50, 1);
+}
+
+.button:disabled {
+    opacity: 50%;
+    cursor: not-allowed;
+}
