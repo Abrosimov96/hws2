@@ -1,5 +1,33 @@
+/*select {*/
+/*    -moz-appearance:none; !* Firefox *!*/
+/*    -webkit-appearance:none; !* Safari and Chrome *!*/
+/*    appearance:none;*/
+/*}*/
+
 .select {
+    position: relative;
+    min-width: 165px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 5px 10px;
+    border: 1px solid #C2C2C2;
+    border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    /*background-image:*/
+    /*        linear-gradient(45deg, transparent 50%, black 50%),*/
+    /*        linear-gradient(135deg, black 50%, transparent 50%);*/
+    /*background-position:*/
+    /*        calc(100% - 10px) calc(1em),*/
+    /*        calc(100% - 5px) calc(1em),*/
+    /*        100% 0;*/
+    /*background-size:*/
+    /*        5px 5px,*/
+    /*        5px 5px,*/
+    /*        2.5em 2.5em;*/
+    /*background-repeat: no-repeat;*/
+
 }
+
 
 .select:focus {
 }

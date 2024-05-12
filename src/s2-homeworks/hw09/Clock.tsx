@@ -10,6 +10,12 @@ function Clock() {
     const [show, setShow] = useState<boolean>(false)
 
     const start = () => {
+        const timerID = setInterval(() => {
+            setDate(new Date())
+            console.log('timer')
+        }, 1000)
+        // @ts-ignore
+        setTimerId(timerID)
         // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
         // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval)
 
@@ -17,22 +23,47 @@ function Clock() {
 
     const stop = () => {
         // пишут студенты // поставить часы на паузу, обнулить ид таймера (timerId <- undefined)
-
+        clearInterval(timerId)
+        setTimerId(undefined)
     }
 
     const onMouseEnter = () => { // пишут студенты // показать дату если наведена мышка
-
+        setShow(true)
     }
     const onMouseLeave = () => { // пишут студенты // спрятать дату если мышка не наведена
-
+        setShow(false)
     }
 
-    const stringTime = 'date->time' || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
-    const stringDate = 'date->date' || <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
-    // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-    const stringDay = 'date->day' || <br/> // пишут студенты
-    const stringMonth = 'date->month' || <br/> // пишут студенты
+    const stringTime = `${date.getHours()}:${date.getMinutes() > 9 
+        ? date.getMinutes() : '0' + date.getMinutes()}:${date.getSeconds() > 9
+        ? date.getSeconds() : '0' + date.getSeconds()}`
+
+    const stringDate = `${date.getDate() > 9
+        ? date.getDate() : '0' + date.getDate()}.${date.getMonth() > 8
+        ? date.getMonth() + 1 : `0${date.getMonth() + 1}`}.${date.getFullYear()}`
+
+    const day = date.getDay()
+    const stringDay = day === 0
+        ? 'Sunday' : day === 1
+            ? 'Monday' : day === 2
+                ? 'Tuesday' : day === 3
+                    ? 'Wednesday' : day === 4
+                        ? 'Thursday' : day === 5
+                            ? 'Friday' : 'Saturday'
+    const month = date.getMonth()
+    const stringMonth = month === 0
+        ? 'January' : month === 1
+            ? 'February' : month === 2
+                ? 'March' : month === 3
+                    ? 'April' : month === 4
+                        ? 'May' : month === 5
+                            ? 'June' : month === 6
+                                ? 'July' : month === 7
+                                    ? 'August' : month === 8
+                                        ? 'September' : month === 9
+                                            ? 'October' : month === 10
+                                                ? 'November' : 'December'
 
     return (
         <div className={s.clock}>
@@ -66,14 +97,14 @@ function Clock() {
             <div className={s.buttonsContainer}>
                 <SuperButton
                     id={'hw9-button-start'}
-                    disabled={true} // пишут студенты // задизэйблить если таймер запущен
+                    disabled={!!timerId} // пишут студенты // задизэйблить если таймер запущен
                     onClick={start}
                 >
                     start
                 </SuperButton>
                 <SuperButton
                     id={'hw9-button-stop'}
-                    disabled={true} // пишут студенты // задизэйблить если таймер не запущен
+                    disabled={!timerId} // пишут студенты // задизэйблить если таймер не запущен
                     onClick={stop}
                 >
                     stop

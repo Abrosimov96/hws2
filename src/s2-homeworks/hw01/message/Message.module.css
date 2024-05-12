@@ -1,56 +1,60 @@
 .message {
-    font-family: Montserrat, sans-serif;
-    text-align: right;
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
+    align-items: flex-end;
+    margin-bottom: 56px;
 }
 
 .imageAndText {
     display: flex;
-    flex-direction: row-reverse;
     align-items: flex-end;
+    flex-direction: row-reverse;
+
+    gap: 12px;
 }
 
 .imageAndText img {
-    max-width: 48px;
+    width: 48px;
+    height: 48px;
 }
 
 .text {
-    color: #fff;
-    background-color: rgba(0, 102, 204, 1);
-    padding: 8px 12px;
-    border-radius: 10px 10px 0 10px;
-    margin-right: 20px;
-    box-shadow: 0 1px 2px 0 rgba(29, 33, 38, 0.1), 0 5px 20px 0 rgba(29, 33, 38, 0.03);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    background-color: #0066CC;
+    color: #FFFFFF;
+    padding: 8px 13px;
+    border-radius: 8px 8px 0 8px;
+    gap: 4px;
 }
 
 .text:after {
     content: '';
     position: absolute;
-    margin-top: -2px;
-    margin-left: 3px;
-    border-left: 12px solid transparent;
-    border-right: 11px solid transparent;
-    border-bottom: 12px solid rgba(0, 102, 204, 1);
-    transform: rotate(226deg);
+    border: 6px solid #0066CC;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    bottom: 0;
+    right: -12px;
+    width: 0;
+    height: 0;
 }
 
 .name {
-    font-weight: 600;
     font-size: 18px;
-    line-height: 22px;
+    font-weight: 600;
 }
 
 .messageText {
-    font-size: 16px;
-    line-height: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
 .time {
-    font-weight: 600;
+    padding: 5px 10px;
     font-size: 10px;
-    line-height: 12px;
-    color: #000;
-    margin: 6px 10px 0 0;
+    font-weight: 600;
 }

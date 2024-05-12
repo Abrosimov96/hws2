@@ -3,6 +3,7 @@
 }
 
 .item:last-of-type {
+    border-bottom: none;
 }
 
 .users {
@@ -10,7 +11,13 @@
     font-size: 14px;
     table-layout: fixed;
     width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
     border-collapse: collapse;
+}
+
+.users tbody tr td:first-child{
+    font-weight: 300;
 }
 
 .buttonsContainer {
@@ -23,12 +30,15 @@
     display: flex;
     flex-direction: column;
     gap: 18px;
+    max-width: 700px;
 }
 
 .thead {
     background: rgba(229, 229, 229, 1);
     padding: 12px 18px;
     font-weight: 600;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .nameCol {
@@ -39,4 +49,5 @@
 .ageCol {
     width: 50%;
     padding: 12px 0;
+
 }
