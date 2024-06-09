@@ -1,4 +1,5 @@
 .input:focus {
+    border: 1px solid #0066CC;
 }
 
 .input {
@@ -16,6 +17,7 @@
 }
 
 .superInput {
+    padding: 12px;
 }
 
 .errorInput {

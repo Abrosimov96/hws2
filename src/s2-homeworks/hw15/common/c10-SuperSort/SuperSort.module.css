@@ -1,0 +1,36 @@
+.title {
+    position: relative;
+    display: inline-block;
+    line-height: 36px;
+    cursor: pointer;
+    user-select: none
+}
+
+[data-theme="3"] {
+    .title {
+        color: #000;
+    }
+}
+
+.icon {
+    width: 8px;
+    height: 16px;
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.icon:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+.iconImg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}

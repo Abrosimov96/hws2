@@ -2,11 +2,26 @@ import React, {useState} from 'react'
 import s2 from '../../s1-main/App.module.css'
 import s from './HW13.module.css'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
-import axios from 'axios'
 import success200 from './images/200.svg'
 import error400 from './images/400.svg'
 import error500 from './images/500.svg'
 import errorUnknown from './images/error.svg'
+import axios, {AxiosError} from 'axios';
+import {Loader} from '../hw10/Loader';
+
+// type ServerError = {
+//     errorMessages: ErrorResponseType[]
+// }
+
+
+type ErrorResponseType = {
+    errorText: string
+    info: string
+    yourBody: {
+        success: boolean
+    }
+}
+
 
 /*
 * 1 - дописать функцию send
@@ -34,16 +49,27 @@ const HW13 = () => {
         axios
             .post(url, {success: x})
             .then((res) => {
-                setCode('Код 200!')
+                setCode(`Код ${res.status}!`)
                 setImage(success200)
-                // дописать
-
+                setText(res.data.errorText)
+                setInfo(res.data.info)
             })
-            .catch((e) => {
-                // дописать
-
+            .catch((error: AxiosError<ErrorResponseType>) => {
+                if (error.response) {
+                    setImage(error.response.status >= 500 ? error500 : error400)
+                    setCode(`Ошибка ${error.response.status}!`)
+                    setText(error.response.data.errorText)
+                    setInfo(error.response.data.info)
+                } else {
+                    setCode('Error!')
+                    setImage(errorUnknown)
+                    setText(error.message)
+                    setInfo(error.name)
+                }
             })
     }
+
+    const isLoading = info === '...loading'
 
     return (
         <div id={'hw13'}>
@@ -56,6 +82,7 @@ const HW13 = () => {
                         onClick={send(true)}
                         xType={'secondary'}
                         // дописать
+                        disabled={isLoading}
 
                     >
                         Send true
@@ -65,6 +92,7 @@ const HW13 = () => {
                         onClick={send(false)}
                         xType={'secondary'}
                         // дописать
+                        disabled={isLoading}
 
                     >
                         Send false
@@ -74,6 +102,7 @@ const HW13 = () => {
                         onClick={send(undefined)}
                         xType={'secondary'}
                         // дописать
+                        disabled={isLoading}
 
                     >
                         Send undefined
@@ -83,6 +112,7 @@ const HW13 = () => {
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
                         // дописать
+                        disabled={isLoading}
 
                     >
                         Send null
@@ -90,21 +120,28 @@ const HW13 = () => {
                 </div>
 
                 <div className={s.responseContainer}>
-                    <div className={s.imageContainer}>
-                        {image && <img src={image} className={s.image} alt="status"/>}
-                    </div>
+                    {
+                        isLoading
+                            ? <Loader/>
+                            : <>
+                                <div className={s.imageContainer}>
+                                    {image && <img src={image} className={s.image} alt="status"/>}
+                                </div>
 
-                    <div className={s.textContainer}>
-                        <div id={'hw13-code'} className={s.code}>
-                            {code}
-                        </div>
-                        <div id={'hw13-text'} className={s.text}>
-                            {text}
-                        </div>
-                        <div id={'hw13-info'} className={s.info}>
-                            {info}
-                        </div>
-                    </div>
+                                <div className={s.textContainer}>
+                                    <div id={'hw13-code'} className={s.code}>
+                                        {code}
+                                    </div>
+                                    <div id={'hw13-text'} className={s.text}>
+                                        {text}
+                                    </div>
+                                    <div id={'hw13-info'} className={s.info}>
+                                        {info}
+                                    </div>
+                                </div>
+                            </>
+                    }
+
                 </div>
             </div>
         </div>
